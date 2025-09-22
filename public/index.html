@@ -415,6 +415,352 @@
         min-height: 120px;
       }
       
+      /* Profile Section Styles */
+      .profile-section {
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        padding: 0;
+        overflow: hidden;
+      }
+      
+      .profile-header {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        padding: 24px 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .profile-header h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
+      
+      .nav-btn {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .nav-btn:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-1px);
+      }
+      
+      .nav-btn.secondary {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+      
+      .profile-content {
+        padding: 32px;
+      }
+      
+      .profile-main {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 40px;
+        margin-bottom: 32px;
+      }
+      
+      .profile-picture-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      
+      .profile-picture {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        border: 4px solid #f8fafc;
+      }
+      
+      .profile-picture img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      .profile-placeholder {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        font-weight: 600;
+        color: white;
+      }
+      
+      .change-photo-btn {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      }
+      
+      .change-photo-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+      
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+      
+      .info-section {
+        background: #f8fafc;
+        border-radius: 12px;
+        padding: 24px;
+        border: 1px solid #e2e8f0;
+      }
+      
+      .info-section h3 {
+        margin: 0 0 20px 0;
+        color: #1f2937;
+        font-size: 1.2rem;
+        font-weight: 600;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 12px;
+      }
+      
+      .info-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      
+      .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .info-item label {
+        font-weight: 600;
+        color: #374151;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .info-value {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px 16px;
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e5e7eb;
+        min-height: 20px;
+      }
+      
+      .info-value span {
+        flex: 1;
+        color: #1f2937;
+        font-weight: 500;
+      }
+      
+      .edit-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        transition: background 0.2s ease;
+        font-size: 0.9rem;
+      }
+      
+      .edit-btn:hover {
+        background: #f3f4f6;
+      }
+      
+      .edit-input {
+        padding: 12px 16px;
+        border: 2px solid #667eea;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        transition: border-color 0.3s ease;
+      }
+      
+      .edit-input:focus {
+        outline: none;
+        border-color: #764ba2;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+      
+      .verified-badge {
+        background: #10b981;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+      
+      .status-active {
+        color: #10b981;
+        font-weight: 600;
+      }
+      
+      .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 50px;
+        height: 24px;
+      }
+      
+      .toggle-switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      
+      .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 24px;
+      }
+      
+      .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      
+      input:checked + .toggle-slider {
+        background-color: #667eea;
+      }
+      
+      input:checked + .toggle-slider:before {
+        transform: translateX(26px);
+      }
+      
+      .security-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      
+      .security-btn {
+        padding: 12px 20px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 1px solid transparent;
+      }
+      
+      .security-btn:not(.secondary):not(.danger) {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+      }
+      
+      .security-btn:not(.secondary):not(.danger):hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+      
+      .security-btn.secondary {
+        background: #f8fafc;
+        color: #374151;
+        border-color: #e5e7eb;
+      }
+      
+      .security-btn.secondary:hover {
+        background: #f1f5f9;
+        transform: translateY(-1px);
+      }
+      
+      .security-btn.danger {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+      }
+      
+      .security-btn.danger:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+      }
+      
+      .profile-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 1px solid #e5e7eb;
+      }
+      
+      .save-btn {
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+      }
+      
+      .save-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+      }
+      
+      .cancel-btn {
+        background: #f8fafc;
+        color: #374151;
+        border: 1px solid #e5e7eb;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      .cancel-btn:hover {
+        background: #f1f5f9;
+        transform: translateY(-1px);
+      }
+
       /* Responsive Design */
       @media (max-width: 768px) {
         .container {
@@ -422,7 +768,7 @@
           gap: 20px;
         }
         
-        .header, .auth-section, .chat-section {
+        .header, .auth-section, .chat-section, .dashboard-section, .profile-section {
           padding: 24px;
         }
         
@@ -438,6 +784,50 @@
         
         .logout-btn {
           width: 100% !important;
+        }
+        
+        .dashboard-nav {
+          flex-direction: column;
+          gap: 12px;
+        }
+        
+        .dashboard-nav button {
+          width: 100%;
+        }
+        
+        .dashboard-stats {
+          grid-template-columns: 1fr;
+        }
+        
+        .profile-main {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        
+        .profile-picture-section {
+          order: -1;
+        }
+        
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .security-actions {
+          grid-template-columns: 1fr;
+        }
+        
+        .profile-actions {
+          flex-direction: column;
+        }
+        
+        .profile-header {
+          flex-direction: column;
+          gap: 16px;
+          text-align: center;
+        }
+        
+        .profile-content {
+          padding: 20px;
         }
       }
       
@@ -539,6 +929,7 @@
           <div class="dashboard-nav">
             <button onclick="showDashboard()" class="nav-btn active" id="dashboard-btn">Overview</button>
             <button onclick="showEmailComposer()" class="nav-btn" id="compose-btn">Compose Email</button>
+            <button onclick="showProfile()" class="nav-btn" id="profile-btn">Profile</button>
           </div>
         </div>
         
@@ -578,6 +969,122 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- User Profile Section -->
+      <div id="profile-section" class="profile-section hidden">
+        <div class="profile-header">
+          <h2>User Profile</h2>
+          <button onclick="showDashboard()" class="nav-btn secondary">← Back to Dashboard</button>
+        </div>
+        
+        <div class="profile-content">
+          <div class="profile-main">
+            <div class="profile-picture-section">
+              <div class="profile-picture">
+                <img id="profile-image" src="" alt="Profile Picture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="profile-placeholder">
+                  <span id="profile-initials">U</span>
+                </div>
+              </div>
+              <button onclick="changeProfilePicture()" class="change-photo-btn">Change Photo</button>
+              <input type="file" id="profile-image-input" accept="image/*" style="display: none;" onchange="handleProfileImageChange(event)">
+            </div>
+            
+            <div class="profile-info">
+              <div class="info-section">
+                <h3>Personal Information</h3>
+                <div class="info-grid">
+                  <div class="info-item">
+                    <label>First Name</label>
+                    <div class="info-value">
+                      <span id="display-first-name">-</span>
+                      <button onclick="editField('first-name')" class="edit-btn">✏️</button>
+                    </div>
+                    <input type="text" id="edit-first-name" class="edit-input hidden" placeholder="Enter first name">
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Last Name</label>
+                    <div class="info-value">
+                      <span id="display-last-name">-</span>
+                      <button onclick="editField('last-name')" class="edit-btn">✏️</button>
+                    </div>
+                    <input type="text" id="edit-last-name" class="edit-input hidden" placeholder="Enter last name">
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Email Address</label>
+                    <div class="info-value">
+                      <span id="display-email">-</span>
+                      <span class="verified-badge">✓ Verified</span>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Phone Number</label>
+                    <div class="info-value">
+                      <span id="display-phone">Not provided</span>
+                      <button onclick="editField('phone')" class="edit-btn">✏️</button>
+                    </div>
+                    <input type="tel" id="edit-phone" class="edit-input hidden" placeholder="Enter phone number">
+                  </div>
+                </div>
+              </div>
+              
+              <div class="info-section">
+                <h3>Account Details</h3>
+                <div class="info-grid">
+                  <div class="info-item">
+                    <label>Account Created</label>
+                    <div class="info-value">
+                      <span id="display-created-date">-</span>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Last Login</label>
+                    <div class="info-value">
+                      <span id="display-last-login">-</span>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Account Status</label>
+                    <div class="info-value">
+                      <span id="display-account-status" class="status-active">Active</span>
+                    </div>
+                  </div>
+                  
+                  <div class="info-item">
+                    <label>Email Notifications</label>
+                    <div class="info-value">
+                      <label class="toggle-switch">
+                        <input type="checkbox" id="email-notifications" checked>
+                        <span class="toggle-slider"></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="info-section">
+                <h3>Security Settings</h3>
+                <div class="security-actions">
+                  <button onclick="changePassword()" class="security-btn">Change Password</button>
+                  <button onclick="enableTwoFactor()" class="security-btn">Enable 2FA</button>
+                  <button onclick="downloadData()" class="security-btn secondary">Download My Data</button>
+                  <button onclick="deleteAccount()" class="security-btn danger">Delete Account</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="profile-actions">
+            <button onclick="saveProfile()" class="save-btn">Save Changes</button>
+            <button onclick="cancelEdit()" class="cancel-btn">Cancel</button>
           </div>
         </div>
       </div>
