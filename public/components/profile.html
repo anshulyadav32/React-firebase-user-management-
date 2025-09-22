@@ -1,0 +1,161 @@
+<!-- User Profile Section -->
+<div id="profile-section" class="profile-section hidden">
+  <div class="profile-header">
+    <h2>User Profile</h2>
+    <button onclick="showDashboard()" class="nav-btn secondary">← Back to Dashboard</button>
+  </div>
+  
+  <div class="profile-content">
+    <div class="profile-main">
+      <div class="profile-picture-section">
+        <div class="profile-picture">
+          <img id="profile-image" src="" alt="Profile Picture" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="profile-placeholder">
+            <span id="profile-initials">U</span>
+          </div>
+        </div>
+        <button onclick="changeProfilePicture()" class="change-photo-btn">Change Photo</button>
+        <input type="file" id="profile-image-input" accept="image/*" style="display: none;" onchange="handleProfileImageChange(event)">
+      </div>
+      
+      <div class="profile-info">
+        <div class="info-section">
+          <h3>Personal Information</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>First Name</label>
+              <div class="info-value">
+                <span id="display-first-name">-</span>
+                <button onclick="editField('first-name')" class="edit-btn">✏️</button>
+              </div>
+              <input type="text" id="edit-first-name" class="edit-input hidden" placeholder="Enter first name">
+            </div>
+            
+            <div class="info-item">
+              <label>Last Name</label>
+              <div class="info-value">
+                <span id="display-last-name">-</span>
+                <button onclick="editField('last-name')" class="edit-btn">✏️</button>
+              </div>
+              <input type="text" id="edit-last-name" class="edit-input hidden" placeholder="Enter last name">
+            </div>
+            
+            <div class="info-item">
+              <label>Email Address</label>
+              <div class="info-value">
+                <span id="display-email">-</span>
+                <span class="verified-badge">✓ Verified</span>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <label>Phone Number</label>
+              <div class="info-value">
+                <span id="display-phone">Not provided</span>
+                <button onclick="editField('phone')" class="edit-btn">✏️</button>
+              </div>
+              <input type="tel" id="edit-phone" class="edit-input hidden" placeholder="Enter phone number">
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <h3>Account Details</h3>
+          <div class="info-grid">
+            <div class="info-item">
+              <label>Account Created</label>
+              <div class="info-value">
+                <span id="display-created-date">-</span>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <label>Last Login</label>
+              <div class="info-value">
+                <span id="display-last-login">-</span>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <label>Account Status</label>
+              <div class="info-value">
+                <span id="display-account-status" class="status-active">Active</span>
+              </div>
+            </div>
+            
+            <div class="info-item">
+              <label>Email Notifications</label>
+              <div class="info-value">
+                <label class="toggle-switch">
+                  <input type="checkbox" id="email-notifications" checked>
+                  <span class="toggle-slider"></span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="info-section">
+          <h3>Security Settings</h3>
+          
+          <!-- Password Change Section -->
+          <div class="security-subsection">
+            <h4>Change Password</h4>
+            <div class="password-form" id="password-form" style="display: none;">
+              <div class="form-group">
+                <label for="current-password">Current Password</label>
+                <input type="password" id="current-password" placeholder="Enter current password">
+              </div>
+              <div class="form-group">
+                <label for="new-password">New Password</label>
+                <input type="password" id="new-password" placeholder="Enter new password">
+              </div>
+              <div class="form-group">
+                <label for="confirm-new-password">Confirm New Password</label>
+                <input type="password" id="confirm-new-password" placeholder="Confirm new password">
+              </div>
+              <div class="password-requirements">
+                <p>Password must contain:</p>
+                <ul>
+                  <li id="req-length">At least 8 characters</li>
+                  <li id="req-uppercase">One uppercase letter</li>
+                  <li id="req-lowercase">One lowercase letter</li>
+                  <li id="req-number">One number</li>
+                </ul>
+              </div>
+              <div class="form-actions">
+                <button onclick="updatePassword()" class="security-btn">Update Password</button>
+                <button onclick="cancelPasswordChange()" class="security-btn secondary">Cancel</button>
+              </div>
+            </div>
+            <button onclick="showPasswordForm()" class="security-btn" id="change-password-btn">Change Password</button>
+          </div>
+
+          <!-- Email Verification Section -->
+          <div class="security-subsection">
+            <h4>Email Verification</h4>
+            <div class="verification-status">
+              <span id="email-verification-status" class="status-verified">✓ Email Verified</span>
+              <button onclick="sendVerificationEmail()" class="security-btn secondary" id="verify-email-btn" style="display: none;">Send Verification Email</button>
+            </div>
+          </div>
+
+          <!-- Other Security Actions -->
+          <div class="security-subsection">
+            <h4>Additional Security</h4>
+            <div class="security-actions">
+              <button onclick="enableTwoFactor()" class="security-btn">Enable 2FA</button>
+              <button onclick="downloadData()" class="security-btn secondary">Download My Data</button>
+              <button onclick="deleteAccount()" class="security-btn danger">Delete Account</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="profile-actions">
+      <button onclick="saveProfile()" class="save-btn">Save Changes</button>
+      <button onclick="cancelEdit()" class="cancel-btn">Cancel</button>
+    </div>
+  </div>
+</div>
