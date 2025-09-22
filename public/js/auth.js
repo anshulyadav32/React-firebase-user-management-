@@ -8,13 +8,21 @@ function updateUI() {
   const chatSection = document.getElementById('chat-section');
   const userEmail = document.getElementById('user-email');
 
+  // Check if elements exist before manipulating them
+  if (!loginForm || !registerForm || !userSection || !dashboardSection || !chatSection) {
+    console.log('Some UI elements not found, waiting for DOM to load...');
+    return;
+  }
+
   if (user) {
     loginForm.style.display = 'none';
     registerForm.style.display = 'none';
     userSection.classList.remove('hidden');
     dashboardSection.classList.remove('hidden');
     chatSection.classList.add('hidden'); // Hide chat initially, show dashboard
-    userEmail.textContent = user.email;
+    if (userEmail) {
+      userEmail.textContent = user.email;
+    }
     
     // Update dashboard info
     updateDashboardInfo();
@@ -50,13 +58,21 @@ function clearAuthStatus() {
 
 async function signInWithGoogle() {
   try {
-    const googleProvider = new firebase.auth.GoogleAuthProvider();
-    googleProvider.addScope('email');
-    googleProvider.addScope('profile');
-    const result = await auth.signInWithPopup(googleProvider);
-    showAuthStatus('Google sign-in successful!');
+    // Get the auth instance and google provider
+    const auth = window.firebaseAuth();
+    const googleProvider = window.googleAuthProvider();
+    
+    if (!auth || !googleProvider) {
+      throw new Error('Firebase not initialized properly');
+    }
+
+    // Use redirect instead of popup for better compatibility
+    showAuthStatus('Redirecting to Google sign-in...');
+    await auth.signInWithRedirect(googleProvider);
+    
   } catch (error) {
-    showAuthStatus(`Google sign-in failed: ${error.message}`, true);
+    console.error('Google sign-in error:', error);
+    showAuthStatus('Google sign-in failed: ' + error.message, true);
   }
 }
 
@@ -70,6 +86,11 @@ async function loginUser() {
   }
 
   try {
+    const auth = window.firebaseAuth();
+    if (!auth) {
+      throw new Error('Firebase not initialized properly');
+    }
+    
     await auth.signInWithEmailAndPassword(email, password);
     showAuthStatus('Login successful!');
     document.getElementById('loginEmail').value = '';
@@ -102,6 +123,11 @@ async function registerUser() {
   }
 
   try {
+    const auth = window.firebaseAuth();
+    if (!auth) {
+      throw new Error('Firebase not initialized properly');
+    }
+    
     const userCredential = await auth.createUserWithEmailAndPassword(email, password);
     
     // Update user profile with name
@@ -124,6 +150,11 @@ async function registerUser() {
 
 async function logout() {
   try {
+    const auth = window.firebaseAuth();
+    if (!auth) {
+      throw new Error('Firebase not initialized properly');
+    }
+    
     await auth.signOut();
     showAuthStatus('Logged out successfully');
     

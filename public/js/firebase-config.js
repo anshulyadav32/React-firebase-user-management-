@@ -1,5 +1,5 @@
 // Firebase Configuration and Initialization
-let auth, functions, user = null;
+let auth, functions, user = null, googleProvider = null;
 
 // Initialize Firebase when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -14,9 +14,12 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   // Initialize Google Auth Provider
-  const googleProvider = new firebase.auth.GoogleAuthProvider();
+  googleProvider = new firebase.auth.GoogleAuthProvider();
   googleProvider.addScope('email');
   googleProvider.addScope('profile');
+  googleProvider.setCustomParameters({
+    prompt: 'select_account'
+  });
 
   // Initialize auth functions for password updates
   window.updateProfile = firebase.auth.updateProfile;
@@ -35,9 +38,23 @@ document.addEventListener('DOMContentLoaded', function() {
       updateEmailVerificationStatus();
     }
   });
+
+  // Handle redirect result for Google sign-in
+  auth.getRedirectResult().then((result) => {
+    if (result.user) {
+      showAuthStatus('Google sign-in successful!');
+      addActivity('Signed in with Google');
+    }
+  }).catch((error) => {
+    if (error.code !== 'auth/no-redirect-operation') {
+      console.error('Redirect result error:', error);
+      showAuthStatus('Google sign-in failed: ' + error.message, true);
+    }
+  });
 });
 
-// Export auth and functions for use in other modules
-window.firebaseAuth = auth;
-window.firebaseFunctions = functions;
+// Export auth, functions, and googleProvider for use in other modules
+window.firebaseAuth = () => auth;
+window.firebaseFunctions = () => functions;
+window.googleAuthProvider = () => googleProvider;
 window.currentUser = () => user;
