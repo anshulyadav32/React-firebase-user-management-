@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMTP Email App</title>
+  
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-functions-compat.js"></script>
+  
+  <!-- Firebase Configuration -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "demo-key",
+      authDomain: "demo-project.firebaseapp.com",
+      projectId: "demo-project",
+      storageBucket: "demo-project.appspot.com",
+      messagingSenderId: "123456789",
+      appId: "demo-app-id"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/auth.css">
+  <link rel="stylesheet" href="styles/dashboard.css">
+  <link rel="stylesheet" href="styles/profile.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header Component -->
+    <div id="header-component"></div>
+    
+    <!-- Auth Component -->
+    <div id="auth-component"></div>
+    
+    <!-- Dashboard Component -->
+    <div id="dashboard-component"></div>
+    
+    <!-- Profile Component -->
+    <div id="profile-component"></div>
+    
+    <!-- Chat Section (Email Composer) -->
+    <div class="chat-section hidden" id="chat-section">
+      <div class="chat-header">
+        <h2>📧 Compose Email</h2>
+        <p>Send emails using our secure SMTP service</p>
+      </div>
+      <div class="chat-container">
+        <div class="form-group">
+          <label for="to-email">To:</label>
+          <input type="email" id="to-email" placeholder="recipient@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject:</label>
+          <input type="text" id="subject" placeholder="Email subject" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea id="message" rows="6" placeholder="Your message here..." required></textarea>
+        </div>
+        <button onclick="sendEmail()" id="send-btn">Send Email</button>
+        <div id="send-status"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/notifications.js"></script>
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/email.js"></script>
+  <script src="js/profile.js"></script>
+  
+  <!-- Component Loader -->
+  <script>
+    // Load HTML components
+    async function loadComponent(componentId, filePath) {
+      try {
+        const response = await fetch(filePath);
+        const html = await response.text();
+        document.getElementById(componentId).innerHTML = html;
+      } catch (error) {
+        console.error(`Failed to load component ${componentId}:`, error);
+      }
+    }
+    
+    // Load all components when DOM is ready
+    document.addEventListener('DOMContentLoaded', async function() {
+      await Promise.all([
+        loadComponent('header-component', 'components/header.html'),
+        loadComponent('auth-component', 'components/auth.html'),
+        loadComponent('dashboard-component', 'components/dashboard.html'),
+        loadComponent('profile-component', 'components/profile.html')
+      ]);
+      
+      // Initialize the application after components are loaded
+      console.log('All components loaded successfully');
+    });
+  </script>
+</body>
+</html>
